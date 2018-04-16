@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TimeController">
+   <children>
+      <AnchorPane layoutX="642.0" layoutY="702.0" prefHeight="81.0" prefWidth="343.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <AnchorPane layoutY="413.0" prefHeight="262.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-border-radius: 15; -fx-background-radius: 15;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="413.0" />
+      <AnchorPane prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
+      <AnchorPane layoutY="310.0" prefHeight="88.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="310.0" />
+      <ImageView fitHeight="800.0" fitWidth="1236.0" layoutX="-14.0" opacity="0.8" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../img/background.jpg" />
+         </image>
+         <effect>
+            <Glow />
+         </effect>
+      </ImageView>
+      <AnchorPane layoutX="50.0" layoutY="311.0" prefHeight="366.0" prefWidth="310.0" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="311.0">
+         <children>
+            <JFXDatePicker fx:id="startDate" defaultColor="#0665b9" layoutX="20.0" layoutY="112.0" onMouseEntered="#showStartDateTips" onMouseExited="#hideStartDateTips" prefHeight="45.0" showWeekNumbers="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="112.0">
+               <padding>
+                  <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+               </padding>
+               <effect>
+                  <DisplacementMap>
+                     <mapData>
+                        <FloatMap />
+                     </mapData>
+                  </DisplacementMap>
+               </effect>
+            </JFXDatePicker>
+            <JFXTimePicker fx:id="startTime" defaultColor="#0665b9" focusTraversable="false" layoutX="20.0" layoutY="193.0" onMouseEntered="#showStartTimeTips" onMouseExited="#hideStartTimeTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="193.0">
+               <padding>
+                  <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+               </padding>
+            </JFXTimePicker>
+            <JFXTimePicker fx:id="endTime" defaultColor="#0665b9" layoutX="20.0" layoutY="235.0" onMouseEntered="#showEndTimeTips" onMouseExited="#hideEndTimeTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="235.0">
+               <padding>
+                  <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+               </padding>
+            </JFXTimePicker>
+            <JFXDatePicker fx:id="endDate" defaultColor="#0665b9" layoutX="20.0" layoutY="152.0" onMouseEntered="#showEndDateTips" onMouseExited="#hideEndDateTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="152.0">
+               <padding>
+                  <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+               </padding>
+            </JFXDatePicker>
+            <JFXButton fx:id="btnOk" defaultButton="true" layoutX="20.0" layoutY="306.0" onAction="#btnOkHandler" prefHeight="39.0" prefWidth="122.0" ripplerFill="#7799d0" style="-fx-border-color: #0665b9; -fx-border-radius: 10; -fx-background-radius: 10;" text="ОК" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnCancel" buttonType="RAISED" cancelButton="true" layoutX="168.0" layoutY="306.0" prefHeight="39.0" prefWidth="122.0" ripplerFill="#cf7b78" style="-fx-border-color: #0665b9; -fx-border-radius: 10; -fx-background-radius: 10;" text="Отмена" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="20.0" layoutY="19.0" prefHeight="88.0" prefWidth="310.0" text="Период формирования отчета" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="391.0" layoutY="50.0" prefHeight="627.0" prefWidth="795.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <TableView fx:id="tableOutput" layoutX="88.0" layoutY="131.0" opacity="0.9" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <columns>
+                <TableColumn fx:id="columnId" editable="false" prefWidth="50.0" resizable="false" text="#" />
+                <TableColumn fx:id="columnModel" editable="false" prefWidth="182.0" resizable="false" text="Модель" />
+                  <TableColumn fx:id="columnDate" editable="false" minWidth="8.0" prefWidth="125.0" resizable="false" text="Дата" />
+                  <TableColumn fx:id="columnTime" editable="false" prefWidth="100.0" resizable="false" text="Время" />
+                  <TableColumn fx:id="columnPolExpand" editable="false" prefWidth="143.0" resizable="false" text="Расход полиола" />
+                  <TableColumn fx:id="columnIsoExpand" editable="false" prefWidth="153.0" resizable="false" text="Расход изоционата" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="758.0" layoutY="631.0" prefHeight="81.0" prefWidth="343.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <JFXButton fx:id="btnSave" layoutX="17.0" layoutY="14.0" prefHeight="31.0" prefWidth="145.0" ripplerFill="#7799d0" style="-fx-border-color: #0665b9; -fx-background-radius: 10; -fx-border-radius: 10;" text="Сохранить" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnExit" layoutX="239.0" layoutY="25.0" prefHeight="51.0" prefWidth="145.0" ripplerFill="#ce7a77" style="-fx-border-color: #0665b9; -fx-background-radius: 10; -fx-border-radius: 10;" text="Выход" textFill="#702b2b" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label fx:id="lblTips" layoutX="33.0" layoutY="759.0" prefHeight="34.0" prefWidth="786.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" />
+   </children>
+</AnchorPane>
