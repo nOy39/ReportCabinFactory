@@ -1,12 +1,12 @@
 package dbhandler;
 
-import helpers.Constante;
+import helpers.Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectDB {
+public class ConnectDB extends Config {
 
     public static Connection connection;
 
@@ -15,11 +15,7 @@ public class ConnectDB {
     //TODO переделать метод чтобы он возвращал коннект.
     public static void openConnection() {
         try {
-            connection = DriverManager.getConnection(Constante.getURL(),
-                    Constante.getUSER(),
-                    Constante.getPASS());
-
-
+            connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
             if (!connection.isClosed()) {
                 System.out.println("Connection is OK!");
@@ -31,23 +27,5 @@ public class ConnectDB {
             System.err.println("!!!!!NO CONNECT!!!!!");
         }
     }
-
-    public Connection connect() {
-        Connection con = null;
-        try {
-            con = DriverManager.getConnection(Constante.getURL(),Constante.getUSER(),Constante.getPASS());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
-    public void closeConnection() {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

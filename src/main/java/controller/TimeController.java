@@ -3,14 +3,10 @@ package controller;
 import anim.Shake;
 import com.jfoenix.controls.*;
 import dbhandler.ConnectDB;
-import dbhandler.DBConnect;
-import dbhandler.ReadBase;
-import helpers.Person;
+import helpers.Constants;
 import helpers.Refrigirators;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -36,13 +32,6 @@ public class TimeController implements Initializable {
 
     private String querry = "";
 
-    private Connection con = null;
-    private PreparedStatement prSt = null;
-    private ResultSet resultSet = null;
-
-    public Refrigirators ref;
-    public ReadBase rb;
-
     @FXML
     private ResourceBundle resources;
 
@@ -50,8 +39,6 @@ public class TimeController implements Initializable {
     private URL location;
 
     private ObservableList<Refrigirators> refList;
-
-    private ObservableList<Person> personList;
 
     @FXML
     private JFXTimePicker startTime;
@@ -104,11 +91,7 @@ public class TimeController implements Initializable {
 
     @FXML
     void btnOkHandler(ActionEvent event) {
-        try {
-            loadData();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
 
@@ -167,6 +150,41 @@ public class TimeController implements Initializable {
         btnExit.setOnAction(event -> System.exit(3));
     }
 
+
+    private void loadData() throws SQLException {
+        int count = 0;
+        ConnectDB.openConnection();
+        refList = FXCollections.observableArrayList();
+        String sqlQuerry = "SELECT "+Constants.OUTPUT_CODE+", "+Constants.OUTPUT_DATE+", "
+                +Constants.OUTPUT_TIME+", "+Constants.OUTPUT_POL_EXPAND+", "
+                +Constants.OUTPUT_ISO_EXPAND+" FROM "+Constants.OUTPUT_TABLE+
+                " WHERE"+querry;
+        System.out.println(sqlQuerry);
+        try {
+            ResultSet rs = ConnectDB.connection.createStatement().executeQuery(sqlQuerry);
+
+            while (rs.next()) {
+                refList.add(new Refrigirators(++count,
+                        rs.getString("prog_code"),
+                        rs.getString("date"),
+                        rs.getString("time"),
+                        rs.getString("pol_expand"),
+                        rs.getString("iso_expand")));
+            }
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+        columnId.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("id"));
+        columnModel.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("modelBar"));
+        columnDate.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("date"));
+        columnTime.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("time"));
+        columnPolExpand.setCellValueFactory(new PropertyValueFactory<Refrigirators,String>("poliol_expand"));
+        columnIsoExpand.setCellValueFactory(new PropertyValueFactory<Refrigirators,String>("iso_expand"));
+        tableOutput.setItems(refList);
+
+        showTips("Всего: "+count+"шт.");
+    }
+
     private String sendQuerryMessage(String startPeriodDay, String endPeriodDay,
                                      String startHour, String endHour) {
 
@@ -190,58 +208,10 @@ public class TimeController implements Initializable {
         return querry;
     }
 
-    private void setCellTable() {
-        setCellTable();
-        columnModel.setCellValueFactory(new PropertyValueFactory<>("modelBar"));
-        columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        columnPolExpand.setCellValueFactory(new PropertyValueFactory<>("poliol_expand"));
-        columnIsoExpand.setCellValueFactory(new PropertyValueFactory<>("iso_expand"));
-    }
-
-    private void loadData() throws SQLException {
-        int count = 0;
-        ConnectDB.openConnection();
-        refList = FXCollections.observableArrayList();
-        String sqlQuerry = "SELECT prog_code, date, time, " +
-                "pol_expand, iso_expand FROM output WHERE"+querry;
-        System.out.println(querry);
-        try {
-            ResultSet rs = ConnectDB.connection.createStatement().executeQuery("SELECT prog_code, date, time, " +
-                    "pol_expand, iso_expand FROM output WHERE"+querry);
-            while (rs.next()) {
-                refList.add(new Refrigirators(++count,
-                        rs.getString("prog_code"),
-                        rs.getString("date"),
-                        rs.getString("time"),
-                        rs.getString("pol_expand"),
-                        rs.getString("iso_expand")));
-                System.out.println(refList.toString());
-            }
-        } catch (Exception ex) {
-            System.err.println(ex);
-        }
-        columnId.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("id"));
-        columnModel.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("modelBar"));
-        columnDate.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("date"));
-        columnTime.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("time"));
-        columnPolExpand.setCellValueFactory(new PropertyValueFactory<Refrigirators,String>("poliol_expand"));
-        columnIsoExpand.setCellValueFactory(new PropertyValueFactory<Refrigirators,String>("iso_expand"));
-        tableOutput.setItems(refList);
-
-        showTips("Всего: "+count+"шт.");
-    }
-
-
     @FXML
     void showStartDateTips(MouseEvent event) {
         String msg = "Начало периода формирования отчета";
         showTips(msg);
-    }
-
-    @FXML
-    void hideStartDateTips(MouseEvent event) {
-        hideTips();
     }
 
     @FXML
@@ -251,19 +221,9 @@ public class TimeController implements Initializable {
     }
 
     @FXML
-    void hideEndDateTips(MouseEvent event) {
-        hideTips();
-    }
-
-    @FXML
     void showStartTimeTips(MouseEvent event) {
         String msg = "Начальное время для формирование почасового отчета";
         showTips(msg);
-    }
-
-    @FXML
-    void hideStartTimeTips(MouseEvent event) {
-        hideTips();
     }
 
     @FXML
@@ -273,8 +233,8 @@ public class TimeController implements Initializable {
     }
 
     @FXML
-    void hideEndTimeTips(MouseEvent event) {
-        hideTips();
+    void hideTips(MouseEvent event) {
+        lblTips.setText("");
     }
 
     private void animShake(Node node) {
@@ -286,8 +246,6 @@ public class TimeController implements Initializable {
         lblTips.setText(msg);
     }
 
-    public void hideTips() {
-        lblTips.setText("");
-    }
+
 
 }

@@ -31,7 +31,7 @@
       </ImageView>
       <AnchorPane layoutX="50.0" layoutY="311.0" prefHeight="366.0" prefWidth="310.0" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="311.0">
          <children>
-            <JFXDatePicker fx:id="startDate" defaultColor="#0665b9" layoutX="20.0" layoutY="112.0" onMouseEntered="#showStartDateTips" onMouseExited="#hideStartDateTips" prefHeight="45.0" showWeekNumbers="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="112.0">
+            <JFXDatePicker fx:id="startDate" defaultColor="#0665b9" layoutX="20.0" layoutY="112.0" onMouseEntered="#showStartDateTips" onMouseExited="#hideTips" prefHeight="45.0" showWeekNumbers="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="112.0">
                <padding>
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </padding>
@@ -43,17 +43,17 @@
                   </DisplacementMap>
                </effect>
             </JFXDatePicker>
-            <JFXTimePicker fx:id="startTime" defaultColor="#0665b9" focusTraversable="false" layoutX="20.0" layoutY="193.0" onMouseEntered="#showStartTimeTips" onMouseExited="#hideStartTimeTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="193.0">
+            <JFXTimePicker fx:id="startTime" defaultColor="#0665b9" focusTraversable="false" layoutX="20.0" layoutY="193.0" onMouseEntered="#showStartTimeTips" onMouseExited="#hideTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="193.0">
                <padding>
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </padding>
             </JFXTimePicker>
-            <JFXTimePicker fx:id="endTime" defaultColor="#0665b9" layoutX="20.0" layoutY="235.0" onMouseEntered="#showEndTimeTips" onMouseExited="#hideEndTimeTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="235.0">
+            <JFXTimePicker fx:id="endTime" defaultColor="#0665b9" layoutX="20.0" layoutY="235.0" onMouseEntered="#showEndTimeTips" onMouseExited="#hideTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="235.0">
                <padding>
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </padding>
             </JFXTimePicker>
-            <JFXDatePicker fx:id="endDate" defaultColor="#0665b9" layoutX="20.0" layoutY="152.0" onMouseEntered="#showEndDateTips" onMouseExited="#hideEndDateTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="152.0">
+            <JFXDatePicker fx:id="endDate" defaultColor="#0665b9" layoutX="20.0" layoutY="152.0" onMouseEntered="#showEndDateTips" onMouseExited="#hideTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="152.0">
                <padding>
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </padding>
