@@ -2,13 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.DisplacementMap?>
-<?import javafx.scene.effect.FloatMap?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,9 +17,10 @@
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TimeController">
    <children>
       <AnchorPane layoutX="642.0" layoutY="702.0" prefHeight="81.0" prefWidth="343.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <AnchorPane layoutY="413.0" prefHeight="262.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-border-radius: 15; -fx-background-radius: 15;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="413.0" />
-      <AnchorPane prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
-      <AnchorPane layoutY="310.0" prefHeight="88.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="310.0" />
+      <AnchorPane layoutY="413.0" prefHeight="262.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: black;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="413.0" />
+      <AnchorPane prefHeight="627.0" prefWidth="795.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
+      <AnchorPane layoutY="310.0" prefHeight="88.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="310.0" />
+      <AnchorPane prefHeight="247.0" prefWidth="310.0" style="-fx-background-color: silver; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
       <ImageView fitHeight="800.0" fitWidth="1236.0" layoutX="-14.0" opacity="0.8" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../img/background.jpg" />
@@ -35,13 +35,6 @@
                <padding>
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </padding>
-               <effect>
-                  <DisplacementMap>
-                     <mapData>
-                        <FloatMap />
-                     </mapData>
-                  </DisplacementMap>
-               </effect>
             </JFXDatePicker>
             <JFXTimePicker fx:id="startTime" defaultColor="#0665b9" focusTraversable="false" layoutX="20.0" layoutY="193.0" onMouseEntered="#showStartTimeTips" onMouseExited="#hideTips" prefHeight="45.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="193.0">
                <padding>
@@ -104,5 +97,18 @@
          </children>
       </AnchorPane>
       <Label fx:id="lblTips" layoutX="33.0" layoutY="759.0" prefHeight="34.0" prefWidth="786.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" />
+      <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="247.0" prefWidth="310.0">
+         <children>
+            <JFXTextField fx:id="modelDetailedView" editable="false" layoutX="21.0" layoutY="29.0" prefHeight="31.0" prefWidth="258.0" unFocusColor="#3300ff">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="dateFiled" editable="false" layoutX="21.0" layoutY="60.0" prefHeight="31.0" prefWidth="258.0" unFocusColor="#3300ff" />
+            <JFXTextField fx:id="timeField" editable="false" layoutX="21.0" layoutY="91.0" prefHeight="31.0" prefWidth="258.0" unFocusColor="#3300ff" />
+            <JFXTextField fx:id="polExpand" editable="false" layoutX="21.0" layoutY="122.0" prefHeight="31.0" prefWidth="258.0" unFocusColor="#3300ff" />
+            <JFXTextField fx:id="isoExpand" editable="false" layoutX="21.0" layoutY="153.0" prefHeight="31.0" prefWidth="258.0" unFocusColor="#3300ff" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -87,6 +87,21 @@ public class TimeController implements Initializable {
     private JFXButton btnExit;
 
     @FXML
+    private JFXTextField modelDetailedView;
+
+    @FXML
+    private JFXTextField dateFiled;
+
+    @FXML
+    private JFXTextField timeField;
+
+    @FXML
+    private JFXTextField polExpand;
+
+    @FXML
+    private JFXTextField isoExpand;
+
+    @FXML
     private Label lblTips;
 
     @FXML
@@ -100,6 +115,8 @@ public class TimeController implements Initializable {
 
         startTime.setIs24HourView(true);
         endTime.setIs24HourView(true);
+
+        modelDetailedView.setPromptText("");
 
         int count = 0;
         btnOk.setOnAction(event -> {
@@ -143,11 +160,26 @@ public class TimeController implements Initializable {
 
         });
 
+        tableOutput.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+                showDetails(newValue, modelDetailedView, dateFiled, timeField, polExpand, isoExpand)
+        );
+
         btnCancel.setOnAction(event -> {
 
         });
 
         btnExit.setOnAction(event -> System.exit(3));
+    }
+
+    private void showDetails(Refrigirators newValue, JFXTextField modelDetailedView, JFXTextField dateFiled, JFXTextField timeField, JFXTextField polExpand, JFXTextField isoExpand) {
+        System.out.println("Refresh");
+        if (newValue != null) {
+            modelDetailedView.setPromptText(newValue.getModelBar());
+            dateFiled.setPromptText(newValue.getDate());
+            timeField.setPromptText(newValue.getTime());
+            polExpand.setPromptText(newValue.getPoliol_expand());
+            isoExpand.setPromptText(newValue.getIso_expand());
+        }
     }
 
 
@@ -174,6 +206,7 @@ public class TimeController implements Initializable {
         } catch (Exception ex) {
             System.err.println(ex);
         }
+
         columnId.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("id"));
         columnModel.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("modelBar"));
         columnDate.setCellValueFactory(new PropertyValueFactory<Refrigirators, String>("date"));
